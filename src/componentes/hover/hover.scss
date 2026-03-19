@@ -1,0 +1,47 @@
+@use "../../global/_variables.scss" as vars;
+
+
+
+.hover {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    opacity: 0;
+
+    div {
+
+        background-color: vars.$background-color;
+        height: 30px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            font-size: vars.$secondary-font-size;
+            color: vars.$font-color;
+        }
+
+    }
+
+
+
+
+}
+
+.hover-visit {
+    padding: 10px;
+    border-radius: 40px;
+    background-color: rgb(253, 98, 98);
+    color: vars.$font-color ;
+    text-decoration: none;
+    align-self: center;
+
+
+
+}

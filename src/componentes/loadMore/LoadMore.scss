@@ -1,0 +1,32 @@
+@use "../../global/_variables.scss" as vars;
+
+
+.cargar-mas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background-color: vars.$background-color-secondary;
+    
+
+
+    button {
+        width: 100px;
+        aspect-ratio: 1/1;
+        border: none;
+        cursor: pointer;
+        background-color: vars.$background-color;
+        border-radius: 50%;
+        overflow-y: hidden;
+
+
+        &:hover {
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+            transform: translateY(-10px);
+            transform-origin: bottom;
+
+        }
+    }
+}

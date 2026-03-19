@@ -1,0 +1,20 @@
+@use "../global/_variables.scss" as vars;
+
+
+
+@mixin display-horizontal {
+    height: 100%;
+    display: flex;
+    gap: 1px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+@mixin hover-nav {
+    background-color: black;
+    border-radius: 50px;
+    transition: all 0.3s;
+    cursor: pointer;
+    color: vars.$background-color;
+}

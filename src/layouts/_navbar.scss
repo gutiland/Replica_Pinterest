@@ -1,0 +1,161 @@
+@use "../global/_variables.scss" as vars;
+@use "../global/_mixing.scss" as mix;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: vars.$primary-font;
+}
+
+
+header {
+    width: 100%;
+    height: 10svh;
+}
+
+nav {
+    @include mix.display-horizontal;
+    padding: 5px;
+    width: 100%;
+    gap: 10px;
+
+    div {
+        height: 10svh;
+        @include mix.display-horizontal;
+
+        ul {
+            @include mix.display-horizontal;
+            margin-left: 0;
+            padding-left: 0;
+
+
+            li {
+                @include mix.display-horizontal;
+
+                width: 80px;
+                height: 80%;
+
+
+
+
+                a {
+                    @include mix.display-horizontal;
+                    width: 80px;
+                    height: 80%;
+                    text-decoration: none;
+                    color: vars.$font-color;
+                    font-size: vars.$primary-font-size;
+
+                    &:hover {
+                        @include mix.hover-nav;
+                    }
+                }
+
+
+            }
+        }
+    }
+}
+
+
+
+
+.img-header {
+    height: 20px;
+
+
+}
+
+.logo {
+
+    transform: scale(1.5);
+    aspect-ratio: 1/1;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.7);
+        transition: all 0.3s;
+
+    }
+
+}
+
+.search {
+    flex: 1;
+    height: 90%;
+
+    input {
+        font-size: vars.$primary-font-size;
+        padding: 20px;
+        width: 100%;
+        height: 70%;
+        border-radius: 50px;
+        border: none;
+        background-color: vars.$background-color-secondary;
+        color: vars.$font-color-secondary;
+    }
+}
+
+.notifications {
+    @include mix.display-horizontal;
+    justify-content: space-between;
+    width: 150px;
+
+    padding-right: 20px;
+
+    div {
+        height: 50%;
+
+        &:hover {
+
+            transform: scale(1.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+    }
+
+    .icono-perfil {
+        height: 30px;
+        aspect-ratio: 1;
+        background-color: vars.$background-color-secondary;
+        border-radius: 50%;
+        font-size: 20px;
+        color: vars.$font-color-secondary;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    nav {
+        padding-right: 10px;
+    }
+
+    .notifications {
+        width: 150px;
+    }
+
+
+    .img-bocadillo {
+        display: none;
+    }
+
+    .img-campana {
+        display: none;
+    }
+
+    .notifications {
+        width: 50px;
+    }
+
+
+}
+
+@media screen and (max-width: 650px) {
+    nav {
+        padding-right: 15px;
+    }
+
+    .nav {
+        display: none;
+    }
+}

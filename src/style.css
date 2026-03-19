@@ -1,0 +1,18 @@
+@import "./layouts/_navBar.scss";
+@import "./global/_variables.scss";
+@import "./componentes/cards/cards.scss";
+@import "./componentes/favoritos/favorites.scss";
+@import "./componentes/hover/hover.scss";
+@import "./componentes/loadMore/LoadMore.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}

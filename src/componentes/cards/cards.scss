@@ -1,0 +1,99 @@
+@use "../../global/_variables.scss" as vars;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+
+
+    @media screen and (max-width: 800px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (max-width: 650px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 450px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 0;
+
+    &:hover {
+
+
+
+        .hover {
+            display: flex;
+            transition: all 0.3s;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .card-author-img {
+            transform: scale(1.1);
+            transition: all 0.3s;
+        }
+
+    }
+}
+
+.card-img-hover {
+    position: relative;
+
+}
+
+.card-img {
+    border-radius: 20px;
+    width: 100%;
+    aspect-ratio: 3/5;
+    object-fit: cover;
+
+    @media screen and (max-width: 450px) {
+        aspect-ratio: 1/1;
+    }
+}
+
+.card-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    bottom: 35px;
+}
+
+.card-author-img {
+    width: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid blue;
+}
+
+.card-upload {
+    display: flex;
+    justify-content: space-between;
+    color: vars.$font-color;
+    font-size: vars.$secondary-font-size;
+    gap: 10px;
+}
