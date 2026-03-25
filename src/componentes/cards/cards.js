@@ -6,7 +6,7 @@ import { printFavoritas } from "../favoritos/favoritos.js";
 
 
 export async function FetchRandom() {
-    const response = await fetch(`https://api.unsplash.com/photos/random?count=30&client_id=${key}`)
+    const response = await fetch(`https://api.unsplash.com/photos/random?count=30&client_id=LbBtisisztXV7lhbu2EBcOngME1Oq_gzkZ6mvwgfuJA`)
     const data = await response.json()
     
     printImgs(data)
@@ -16,7 +16,7 @@ export async function FetchRandom() {
 
 export async function FetchImgs(page = 1) {
     try {
-    const response = await fetch(`https://api.unsplash.com/photos?page=${page}&per_page=30&client_id=${key}`);
+    const response = await fetch(`https://api.unsplash.com/photos?page=${page}&per_page=30&client_id=LbBtisisztXV7lhbu2EBcOngME1Oq_gzkZ6mvwgfuJA`);
     const data = await response.json();
     const arrFav = JSON.parse(localStorage.getItem("favoritas")) || [];
     printImgs(data);
