@@ -9,7 +9,7 @@ document.querySelector("#app").appendChild(divFavs)
 
 
 const papelera = document.createElement("img")
-papelera.src = "./public/assets/basura.png"
+papelera.src = "./assets/basura.png"
 papelera.alt = "Papelera"
 papelera.classList.add("papelera")
 const divFavsPapelera = document.createElement("div")

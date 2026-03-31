@@ -1,4 +1,4 @@
-import { FetchRandom } from "../cards/cards";
+import { FetchImgs, random } from "../cards/cards";
 
 export function loadMore() {
 const divCargar = document.createElement("div")
@@ -13,6 +13,6 @@ boton.textContent = "Cargar más"
 divCargar.appendChild(boton)
 document.body.appendChild(divCargar)
 boton.addEventListener("click", () => {
-    FetchRandom()
+    FetchImgs(random);
 })
 }

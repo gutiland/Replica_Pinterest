@@ -4,19 +4,14 @@ const key = import.meta.env.VITE_API_KEY;
 import { Hover } from "../hover/hover.js";
 import { printFavoritas } from "../favoritos/favoritos.js";
 
-
-export async function FetchRandom() {
-    const response = await fetch(`https://api.unsplash.com/photos/random?count=30&client_id=LbBtisisztXV7lhbu2EBcOngME1Oq_gzkZ6mvwgfuJA`)
-    const data = await response.json()
-    
-    printImgs(data)
-
-}
+export const home = `https://api.unsplash.com/photos?page=0&per_page=30&client_id=${key}`;
+export const random = `https://api.unsplash.com/photos/random?count=30&client_id=${key}`;
+export const theme = ``;
 
 
-export async function FetchImgs(page = 1) {
+export async function FetchImgs(endpoint) {
     try {
-    const response = await fetch(`https://api.unsplash.com/photos?page=${page}&per_page=30&client_id=LbBtisisztXV7lhbu2EBcOngME1Oq_gzkZ6mvwgfuJA`);
+    const response = await fetch(endpoint);
     const data = await response.json();
     const arrFav = JSON.parse(localStorage.getItem("favoritas")) || [];
     printImgs(data);
@@ -29,41 +24,42 @@ export async function FetchImgs(page = 1) {
 
 
 export function printImgs(data) {
-    const cards =document.createElement("div")
+    const cards = document.createElement("div")
         cards.classList.add("cards")
-    data.forEach(element => {
+        document.querySelector("#app").appendChild(cards)
+    data.forEach(photo => {
         
         const divCard = document.createElement("div")
         divCard.classList.add("card")
-        divCard.alt_description = element.alt_description || ""
-        divCard.description = element.description || ""
-        divCard.user = element.user || {}
+        divCard.alt_description = photo.alt_description || ""
+        divCard.description = photo.description || ""
+        divCard.user = photo.user || {}
 
 
         const divImg = document.createElement("div")
         divImg.classList.add("card-img-hover")
 
-         const hover = Hover(element.likes, element.user.total_free_photos, element.user.portfolio_url)
+         const hover = Hover(photo.likes, photo.user.total_free_photos, photo.user.portfolio_url)
         divImg.appendChild(hover) 
 
         const img = document.createElement("img")
         img.classList.add("card-img")
-        const url = `${element.urls.regular}&w=600&h=1000&fit=crop&crop=entropy&q=80`;
+        const url = `${photo.urls.raw}&w=600&h=1000&fit=crop&crop=entropy&q=80`;
         img.src = url;
-        img.alt = element.alt_description
+        img.alt = photo.alt_description
 
 
         const divAuthor = document.createElement("div")
         divAuthor.classList.add("card-author")
 
         const imgAuthor = document.createElement("img")
-        imgAuthor.src = element.user.profile_image.medium
-        imgAuthor.alt = element.user.username
+        imgAuthor.src = photo.user.profile_image.medium
+        imgAuthor.alt = photo.user.username
         imgAuthor.classList.add("card-author-img")
-        imgAuthor.style.borderColor = element.color
+        imgAuthor.style.borderColor = photo.color
 
         const author = document.createElement("p")
-        author.textContent = element.user.username
+        author.textContent = photo.user.username
         author.classList.add("card-author-name")
 
         divAuthor.appendChild(imgAuthor)
@@ -72,7 +68,7 @@ export function printImgs(data) {
         const date = document.createElement("h3")
         date.classList.add("card-date")
 
-        const fecha = new Date(element.created_at)
+        const fecha = new Date(photo.created_at)
 
         date.textContent = fecha.toLocaleDateString("es-ES")
 
@@ -80,7 +76,7 @@ export function printImgs(data) {
         upload.classList.add("card-upload")
 
         const imgUpload = document.createElement("img")
-        imgUpload.src = "./public/assets/Subida.png"
+        imgUpload.src = "./assets/Subida.png"
         imgUpload.alt = "Subida"
         imgUpload.classList.add("card-upload-img")
 
@@ -93,14 +89,10 @@ export function printImgs(data) {
 
         divAuthor.appendChild(upload)
 
-        
         cards.appendChild(divCard)
-        document.querySelector("#app").appendChild(cards)
+        
         document.querySelector(".cards").appendChild(divCard)
 
-
-
-
-
     });
+    
 }

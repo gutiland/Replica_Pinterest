@@ -23,10 +23,10 @@ export const Hover = (likesNumber, photosNumber, href) => {
     nLikes.classList.add("nLikes")
 
     const camara = document.createElement("img")
-    camara.src = "./public/assets/camara.png"
+    camara.src = "./assets/camara.png"
     camara.alt = "camara"
     const corazones = document.createElement("img")
-    corazones.src = "./public/assets/corazon.png"
+    corazones.src = "./assets/corazon.png"
     corazones.alt = "likes"
 
 
