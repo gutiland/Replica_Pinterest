@@ -48,9 +48,7 @@ papelera.addEventListener("click", () => {
 export function printFavoritas(arrFav) {
     const divFavs = document.querySelector(".favs")
 
-    if (divFavs.innerHTML == "") {
-        console.log("ya está vacío")
-    } else {
+    if (divFavs.innerHTML !== "") {
         divFavs.innerHTML = ""
     }
 

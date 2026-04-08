@@ -17,9 +17,9 @@ export const Hover = (likesNumber, photosNumber, href) => {
     visitar.target = "_blank"
     visitar.classList.add("hover-visit")
     const nFotos = document.createElement("p")
-    nFotos.textContent = likesNumber
+    nFotos.textContent = photosNumber 
     const nLikes = document.createElement("p")
-    nLikes.textContent = photosNumber
+    nLikes.textContent = likesNumber
     nLikes.classList.add("nLikes")
 
     const camara = document.createElement("img")

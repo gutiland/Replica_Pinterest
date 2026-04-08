@@ -1,5 +1,4 @@
-import { FetchImgs, random, home } from "../cards/cards"
-import { FetchAuthor } from "../searchBar/searchbar"
+import { FetchImgs} from "../cards/cards"
 
 export function navBar() {
 
@@ -88,22 +87,22 @@ export function navBar() {
       input.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         document.querySelector(".cards").innerHTML = ""
-        const theme = input.value
-        FetchAuthor(theme);
+
+        FetchImgs("search", input.value);
         input.value = ""
     }
 })
 const logo = document.querySelector(".img-logo")
 logo.addEventListener("click", () => {
     document.querySelector(".cards").innerHTML = ""
-    FetchImgs(home);
+    FetchImgs("home");
     document.querySelector(".divFavsPapelera").classList.remove("divPapelera-open")
 })
 
 const explorar = document.querySelector(".explora")
 explorar.addEventListener("click", () => {
     document.querySelector(".cards").innerHTML = ""
-    FetchImgs(random);
+    FetchImgs("random");
     }
 )
 

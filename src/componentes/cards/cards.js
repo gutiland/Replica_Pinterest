@@ -2,29 +2,39 @@ const key = import.meta.env.VITE_API_KEY;
 
 
 import { Hover } from "../hover/hover.js";
-import { printFavoritas } from "../favoritos/favoritos.js";
-
-export const home = `https://api.unsplash.com/photos?page=0&per_page=30&client_id=${key}`;
-export const random = `https://api.unsplash.com/photos/random?count=30&client_id=${key}`;
-export const theme = ``;
+import { printFavoritas, favoritas } from "../favoritos/favoritos.js";
 
 
-export async function FetchImgs(endpoint) {
-    try {
-    const response = await fetch(endpoint);
-    const data = await response.json();
-    const arrFav = JSON.parse(localStorage.getItem("favoritas")) || [];
-    printImgs(data);
-     printFavoritas(arrFav);
-    } catch (error) {
-        console.error("Error fetching images:", error);
-    }
+export async function FetchImgs(type, query = "") {
+
+  let url = "";
+
+  if (type === "home") {
+    url = `https://api.unsplash.com/photos?page=0&per_page=30&client_id=${key}`;
+  }
+
+  if (type === "random") {
+    url = `https://api.unsplash.com/photos/random?count=30&client_id=${key}`;
+  }
+
+  if (type === "search") {
+    url = `https://api.unsplash.com/search/photos?page=1&query=${query}&client_id=${key}`;
+  }
+
+  const res = await fetch(url);
+  const data = await res.json();
+  let images = ""
+  if(type === "search"){images = data.results}else{images = data}
+    printImgs(images);
+   printFavoritas(favoritas)
     
-}
+  return data;
+};
 
 
+const cards = document.createElement("div")
 export function printImgs(data) {
-    const cards = document.createElement("div")
+    
         cards.classList.add("cards")
         document.querySelector("#app").appendChild(cards)
     data.forEach(photo => {
